@@ -1,13 +1,26 @@
+create table DEPT
+(
+  DEPTNO int,
+  DNAME VARCHAR(20),
+  LOC VARCHAR(20)
+  );
+
 CREATE TABLE EMP(
-    empno number,
-    ename varchar(50),
-    job char,
-    mgr number,
-    hiredate date,
-    sal number,
-    comm number,
-    dept number
+    EMPNO int,
+    ENAME varchar(50),
+    JOB VARCHAR(20),
+    MGR int,
+    HIREDATE date,
+    SAL INT,
+    COMM int,
+    DEPT int
 );
+
+INSERT INTO DEPT VALUES(10,'ACCOUNTING','NEW YORK');
+INSERT INTO DEPT VALUES(20,'RESEARCH','DALLAS');
+INSERT INTO DEPT VALUES(30,'SALES','CHICAGO');
+INSERT INTO DEPT VALUES(40,'OPERATIONS','BOSTON');
+
 
 INSERT INTO EMP(empno,ename,job,mgr,hiredate,sal,comm,dept)
 VALUES('7369','SMITH','CLERK','7902','17-DEC-80','800','','20');
@@ -32,7 +45,7 @@ VALUES('7844','TURNER','SALESMAN','7698','08-SEP-81','1500','0','30');
 INSERT INTO EMP(empno,ename,job,mgr,hiredate,sal,comm,dept)
 VALUES('7876','ADAMS','CLERK','7788','23-MAY-87','1100','','20');
 INSERT INTO EMP(empno,ename,job,mgr,hiredate,sal,comm,dept)
-VALUES('7900','JAMES','CLERK','7698','03-DEC-81','950','0','30');
+VALUES('7900','JAMES','CLERK','7698','03-DEC-81','950','','30');
 INSERT INTO EMP(empno,ename,job,mgr,hiredate,sal,comm,dept)
 VALUES('7902','FORD','ANALYST','7566','03-DEC-81','3000','','20');
 INSERT INTO EMP(empno,ename,job,mgr,hiredate,sal,comm,dept)
@@ -44,18 +57,26 @@ CREATE TABLE MANAGER(
   SALARY int,
   HIREDATE date
   );
+
+
 INSERT INTO MANAGER (MGR_ID, NAME, SALARY,HIREDATE)
 SELECT empno,ename,sal,hiredate
 FROM EMP
 WHERE job='MANAGER';
 
-CREATE TABLE DEPT(
-  DEPTNO number,
-  DNAME varchar(30),
-  LOC varchar(15)
-  );
- 
-INSERT INTO DEPT VALUES('10','ACCOUNTING','NEW YORK');
-INSERT INTO DEPT VALUES('20','RESEARCH','DALLAS');
-INSERT INTO DEPT VALUES('30','SALES','CHICAGO');
-INSERT INTO DEPT VALUES('40','OPERATIONS','BOSTON');
+UPDATE dept SET loc = 'NEW YORK'
+WHERE loc='BOSTON';
+
+UPDATE dept SET loc = 'DALLAS'
+WHERE DEPTNO=20;
+
+DELETE FROM EMP
+WHERE ename='PAUL';
+
+SELECT * FROM DEPT;
+
+SELECT ename,sal FROM EMP;
+
+SELECT DISTINCT DNAME FROM DEPT;
+
+SELECT ENAME AS NAME ,SAL AS SALARY FROM EMP;
