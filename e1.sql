@@ -1,14 +1,50 @@
-CREATE TABLE dept (
-	deptno int,
-	dname varchar(30),
-	loc varchar(30));
+create table DEPT
+(
+  DEPTNO int,
+  DNAME VARCHAR(20),
+  LOC VARCHAR(20)
+  );
 
-CREATE TABLE emp (
-    empno NUMBER,
-    ename VARCHAR2(255), 
-    job char(30),
-    mgr int,
-    hiredate date,
-    salary NUMBER, 
-    comm int,
-    deptno int);
+  CREATE TABLE EMP(
+    EMPNO int,
+    ENAME varchar(50),
+    JOB VARCHAR(20),
+    MGR int,
+    HIREDATE date,
+    SAL INT,
+    COMM int,
+    DEPT int
+);
+
+select table_name from user_tables;
+
+DESC EMP;
+DESC DEPT;
+
+SELECT DISTINCT * FROM EMP;
+
+ALTER TABLE DEPT
+ADD COMMT CHAR;
+ALTER TABLE DEPT
+ADD MISCEL CHAR;
+
+ALTER TABLE DEPT
+MODIFY LOC VARCHAR(15);
+
+ALTER TABLE DEPT
+SET UNUSED(MISCEL);
+
+ALTER TABLE DEPT
+DROP COLUMN COMMT;
+
+ALTER TABLE DEPT
+DROP UNUSED COLUMNS;
+
+ALTER TABLE DEPT
+RENAME  TO DEPT12;
+
+DELETE FROM DEPT12;
+
+COMMENT ON TABLE DEPT12 IS 'THIS IS A COMMENT';
+
+DROP TABLE DEPT12;
